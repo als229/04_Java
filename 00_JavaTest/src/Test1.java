@@ -38,6 +38,30 @@ public class Test1 {
 		 * .class 파일 : 컴파일된 파일(바이트 코드)
 		 * 
 		*/
+		
+		/*
+		 * * JVM(Java Virtual Machine)
+		 * - Java 코드를 실행 시키는 프로그램
+		 * - OS별로 버전이 존재
+		 *  => OS 에 붙어서 공통된 JAVA 코드를 처리
+		 * 
+		 * */
+		
+		/*
+		 * * JIT(Just-in-time)
+		 * 
+		 * */
+		
+		/*
+		 * * JRE(Java Runtime Environment, 자바 실행 환경)
+		 * - 자바를 실행할 수 있게 하는 프로그램
+		 * */
+		
+		/*
+		 * * JDK(Java Development Kit)
+		 * - JRE + 자바 개발 도구
+		 * */
+		
 
 	}
 }
