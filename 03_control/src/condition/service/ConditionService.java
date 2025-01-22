@@ -183,6 +183,7 @@ public class ConditionService {
 		double joongPoint = 0;
 		double kimalPoint = 0;
 		double kwajaePoint = 0;
+		// 자바 지역변수는 초기화가 안됐을 시 빈칸으로 사용 불가. (JS에서는 undefined 로 사용가능)
 		
 		do	{
 			pass = false;
@@ -235,11 +236,29 @@ public class ConditionService {
 		}while (pass);
 		
 		finalpoint = joongPoint*0.4 + kimalPoint*0.5 + kwajaePoint*0.1;
-		int num1 = (int)finalpoint/10;
+		int num1 = (int)finalpoint/10; // => finalpoint를 먼저 int로 바꾼 후 10으로 나눔 => 10의 자리 숫자만 남김
 		int num2 = (int)finalpoint%10;
 		
-		switch(num1) {
-		case 10 : 
+//		// switch 문으로
+//		switch(num1) { // switch 문 조건식 내에는 정수/문자열 작성 가능
+//			case 10, 9  : grade = "A" + (num2 >= 5 ? "+" : ""); break; // java에서는 case에 여러 경우를 ',' 기호를 이용해서 작성 가능(JS 에서는 안됨)
+//			case 8  	: grade = "B" + (num2 >= 5 ? "+" : ""); break; 
+//			case 7  	: grade = "C" + (num2 >= 5 ? "+" : ""); break; 
+//			case 6  	: grade = "D" + (num2 >= 5 ? "+" : ""); break; 
+//			default 	: grade = "F"; break;
+//		}
+		
+		// switch 문으로 강사님 코드
+		switch(num1) { // switch 문 조건식 내에는 정수/문자열 작성 가능
+			case 10, 9  : grade = "A" ; break; // java에서는 case에 여러 경우를 ',' 기호를 이용해서 작성 가능(JS 에서는 안됨)
+			case 8  	: grade = "B" ; break; 
+			case 7  	: grade = "C" ; break; 
+			case 6  	: grade = "D" ; break; 
+			default 	: grade = "F"; break;
+		}
+		
+		if(finalpoint == 100 ||(num1 >= 6 && num2 >= 5)) {
+			grade = grade + "+";
 		}
 		
 		// if 문으로
