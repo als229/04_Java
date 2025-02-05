@@ -16,7 +16,6 @@ public class KKMCalculator implements Calculator{
 	@Override
 	public int minus(int a, int b) {
 		int num = a - b;
-
 		return checkNum(num);
 	}
 
@@ -54,6 +53,6 @@ public class KKMCalculator implements Calculator{
 		
 		return checkNum(num);
 	}
-asdsad
+
 	
 }
