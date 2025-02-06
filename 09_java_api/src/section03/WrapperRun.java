@@ -1,12 +1,16 @@
-package section02;
+package section03;
 
-public class StringRun {
+public class WrapperRun {
+
 	public static void main(String[] args) {
 		
-		StringService service = new StringService();
+		WrapperService service = new WrapperService();
 		
 //		service.test1();
 //		service.test2();
 		service.test3();
+		
+		
 	}
+
 }

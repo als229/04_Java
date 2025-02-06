@@ -87,4 +87,67 @@ public class StringService {
 		System.out.println("[필드 값 비교] s1.equals(s3) : " + (s1.equals(s3))); // true
 	}
 	
+	/* [ StringBuilder / StringBuffer ]
+	 *  - String의 불변성 문제를 해결한 클래스
+	 *  => 가변성(mutable)
+	 *  
+	 *  - 기본 16글자를 저장할 수 있는 크기로 생성
+	 *  - 저장되는 문자열의 길이에 따라서 자동으로 크기가 증가/감소함
+	 * 
+	 *  - 문자열의 추가/수정/삭제가 발생해도 별도의 String 객체 생성이 없어서 메모리 효율이 좋다.
+	 *  
+	 *  - StringBuilder : Thread Safe 미지원(비동기, 빠름)
+	 *  
+	 *  - StringBuffer : Thread Safe 지원(동기, 느림)
+	 */
+	
+	public void test3() {
+		
+		// StringBuilder 객체 생성
+		StringBuilder sb = new StringBuilder();
+		
+		System.out.println("sb 크기 : " + sb.capacity()); // capacity(용량)
+		System.out.println("sb 주소 : " + System.identityHashCode(sb)); // 424058530
+
+		
+		/* append(String s) : 제일 뒤에 문자열 s 추가 */
+		sb.append("abcde");
+		sb.append("fghij");
+		sb.append("klmno");
+		sb.append("/");
+		
+		/* toString() : StringBuilder 객체에 저장된 값을 String 형태로 반환 */
+		System.out.println("===================================================");
+		System.out.println("sb.toString() : " + sb.toString()); // abcdefghijklmno/
+		System.out.println("sb 크기 : " + sb.capacity()); // capacity(용량)
+		System.out.println("sb 주소 : " + System.identityHashCode(sb)); // 424058530
+		// => 주소가 변하지 않음 !
+		// => 가변성 확인!
+		
+		/* insert(int offset, String s) : offset 위치에 s 삽입 */
+		sb.insert(0, "가나다라");
+
+		System.out.println("===================================================");
+		System.out.println("sb.toString() : " + sb.toString()); // 가나다라abcdefghijklmno/
+		System.out.println("sb 크기 : " + sb.capacity()); //34  (기존용량 +1) * 2 식으로 용량이 부족할때마다 늘음
+		System.out.println("sb 주소 : " + System.identityHashCode(sb)); // 424058530
+		// 크기 증가 + 주소는 그대로 확인.
+		
+		/* delete(int start, int end) : start ~ end 사이 삭제 => start 이상 end 미만!! */
+		sb.delete(4, 9);
+		System.out.println("===================================================");
+		System.out.println("sb.toString() : " + sb.toString()); // 가나다라fghijklmno/
+		System.out.println("sb 크기 : " + sb.capacity()); //34  
+		System.out.println("sb 주소 : " + System.identityHashCode(sb)); // 424058530
+		// 크기 같음 + 주소 그대로
+		// => 한번 증가한 크기는 줄어들지 않음
+		
+		/* trimToSize() : 버퍼 크기를 문자열 길이에 맞춤 */
+		sb.trimToSize();
+		System.out.println("===================================================");
+		System.out.println("sb 크기 : " + sb.capacity()); //15 
+	}
+	
+	
+	
 }
