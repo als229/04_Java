@@ -98,8 +98,5 @@ public class PrintEx {
 		System.out.print("1\t2\t3\n");
 		System.out.print("\"홍길동\"의 자료형은 String\r");
 		System.out.print("\\o/\n");
-		
-		
-		
 	}
 }

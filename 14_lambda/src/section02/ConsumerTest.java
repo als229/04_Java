@@ -39,10 +39,5 @@ public class ConsumerTest {
 		 * 
 		 * LocalDate.plusDays(long l) : 저장된 시간에서 l일 후 날짜 반환
 		 */
-		
-		
-		
-		
-		
 	}
 }

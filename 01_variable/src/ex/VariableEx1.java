@@ -175,8 +175,5 @@ public class VariableEx1 {
 		
 		System.out.println("str2 : " + str2);
 		System.out.println(System.identityHashCode(str2)); // hashCode : 주소 비슷한 것
-		
-		
-		
 	}
 }

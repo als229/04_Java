@@ -28,12 +28,8 @@ public class Main1 {
 		 * 
 		 * ex) Consumer<T> con = () -> {}; (X)
 		 * 	   Consumer<T> con = 클래스명::메서드명 (O)
-		 * 
-		 * 
 		 */
-		
-		
-		
+
 		/* Calculator 구현체를 만들어서 메서드 수행하기 */
 
 		/* 1. 인터페이스를 상속 받은 클래스 이용 */

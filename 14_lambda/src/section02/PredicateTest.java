@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public class PredicateTest {
 	public static void main(String[] args) {
 		
-		/* Preddicate 계열
+		/* Predicate 계열
 		 * - 매개 변수를 전달 받아 boolean 값을 반환하는 함수형 인터페이스
 		 * 	=> 조건식 결과 반환으로 자주 사용
 		 * 

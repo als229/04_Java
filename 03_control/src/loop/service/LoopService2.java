@@ -135,11 +135,4 @@ public class LoopService2 {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 }
