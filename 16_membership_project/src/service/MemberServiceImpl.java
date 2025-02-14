@@ -44,6 +44,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public boolean addMember(String name, String phone) throws IOException {
     	
+    	// view에서 고객이 입력한 name, phone 으로 Member 인스턴스 생성(amount, grade는 0으로 생성)
     	boolean flag = dao.addMember(new Member(name, phone, 0, 0));
 
         return flag;
@@ -54,6 +55,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<Member> getMemberList() {
     	
+    	// getMemberList 에서 memberList 요청
     	List <Member> memberList = dao.getMemberList();
     	
         return memberList;
@@ -64,9 +66,14 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<Member> selectName(String searchName) {
 
+    	// 기존 memberList
     	List<Member> memberList = dao.getMemberList();
+    	
+    	// 검색할 이름이 같은 Member들을 담을 List
     	List<Member> searchedMemberList = new ArrayList<Member>(); 
+    	
     	memberList.stream().filter(m -> m.getName().equals(searchName)).forEach(a -> {
+    		// filter 에서 memberList의 이름과 검색할 이름(searchName)이 같은 Member를 searchedMemberList에 담는다.
     		searchedMemberList.add(a);
     	});
     	
@@ -89,13 +96,13 @@ public class MemberServiceImpl implements MemberService{
     	
     	if(amount < 100_000) {
     		grade = gradeArr[0];
-    		nowGrade = 0;
+    		nowGrade = Member.COMMON;
     	}else if(amount < 1_000_000) {
     		grade = gradeArr[1];
-    		nowGrade = 1;
+    		nowGrade = Member.GOLD;
     	}else {
     		grade = gradeArr[2];
-    		nowGrade = 2;
+    		nowGrade = Member.DIAMOND;
     	}
     	target.setGrade(nowGrade);
     	

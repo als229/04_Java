@@ -31,7 +31,7 @@ public class MemberDAOImpl implements MemberDAO{
     //   이미 파일로 저장된 회원 목록이 있으면 읽어오고 없으면 새로 만들기
     public MemberDAOImpl() throws FileNotFoundException, IOException, ClassNotFoundException {
 
-        // membership.dat 파일이 존재하는지 검사
+        // membership.bin 파일이 존재하는지 검사
         File file = new File(FILE_NAME);
 
         if( file.exists() ) { // 존재하는 경우
@@ -61,6 +61,8 @@ public class MemberDAOImpl implements MemberDAO{
     // memberList 반환
     @Override
     public List<Member> getMemberList() {
+    	// 위에 생성자에서 만들어져 있는 memberList 반환
+    	// membermList는 view생성자 -> service 생성자 -> dao 생성자 순으로 프로그램 실행 되면 자동으로 MemberList.bin 읽고 생성됨.
     	return memberList;
     }
 
@@ -74,15 +76,17 @@ public class MemberDAOImpl implements MemberDAO{
     // 회원 추가
     @Override
     public boolean addMember(Member member) throws IOException {
-    	boolean flag = true;
+    	boolean flag = true; // 성공, 실패 확인용 flag
+    	
     	
     	if(memberList.stream().filter(m -> member.getPhone().equals(m.getPhone())).findFirst().isPresent()) {
+    		// stream의 filter 이용해서 파라미터의 phone이랑 리스트에 phone 같은거에서 findFirst에 isPresnt로 값 있냐 없냐 확인 후 값이 있으면 false(중복 전화번호)
     		flag = false;
-    	}else {
+    	}else {// 중복값이 없으면 추가
     		memberList.add(member);
     	}
     	
-    	saveFile();
+    	saveFile(); // 추가 수정 후 저장.
     	
         return flag;
     }

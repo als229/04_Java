@@ -115,7 +115,6 @@ public class MemberView {
 			
 			if(phone.length() != 11) {
 				System.out.println("*** 다시 입력해 주세요 ***");
-				continue;
 			}else {
 				pass = false;
 			}
@@ -231,7 +230,6 @@ public class MemberView {
 			if(memberList.size() == 1) {
 				System.out.print("수정할 전화번호 입력 : ");
 				afterPhone = sc.next();
-				
 				
 				target = memberList.get(0);
 			}else {
