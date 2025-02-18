@@ -150,7 +150,6 @@ public class TodoListView {
 	private void todoDetailView() throws NumberFormatException, IOException {
 		
 		br = new BufferedReader(new InputStreamReader(System.in));
-		
 		System.out.println("\n===============[2. Todo Detail View]===============\n");
 		
 		System.out.print("인덱스 번호 입력 : ");
@@ -176,8 +175,8 @@ public class TodoListView {
 	 * 
 	 */
 	private void todoAdd() throws IOException {
-		String detail = "";
 		String detailLine = "";
+		StringBuilder sb = new StringBuilder();
 		
 		System.out.println("\n===============[3. Todo Add]===============\n");
 		
@@ -191,12 +190,12 @@ public class TodoListView {
 			detailLine = br.readLine();
 			
 			if(!detailLine.equals("!wq")) {
-				detail += detailLine;
+				sb.append(detailLine);
 			}
 		}
 		System.out.println("-----------------------------------------------");
 		
-		int index = service.todoAdd(title, detail);
+		int index = service.todoAdd(title, sb.toString());
 		
 		System.out.printf("[%d] 인덱스에 추가 되었습니다.",index);
 	}
@@ -234,8 +233,8 @@ public class TodoListView {
 	 */
 	private void todoUpdate() throws NumberFormatException, IOException {
 		
+		StringBuilder sb = new StringBuilder();
 		String detailLine = "";
-		String detail = "";
 		
 		System.out.println("\n===============[5. Todo Update]===============\n");
 		
@@ -258,7 +257,6 @@ public class TodoListView {
 		System.out.println("세부 내용 작성 (입력 종료 시 !wq 작성 후 엔터)");
 		System.out.println("-----------------------------------------------");
 		
-		StringBuilder sb = new StringBuilder();
 		while(!detailLine.equals("!wq")) {
 			detailLine = br.readLine();
 			
@@ -294,8 +292,6 @@ public class TodoListView {
 		}
 		
 	}
-	
-	
 	
 	
 }
